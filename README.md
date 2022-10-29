@@ -38,16 +38,24 @@
 
 <h3>1- Clonar el repositorio en una carpeta a eleccion</h3>
 
-<h3>2- Mover ambas carpetas que se encontraran en el interior del repositorio a visual studio code</h3>
-
-<h3>3- Levantar el servicio API en un servidor local</h3>
+<h3>2- Levantar el servicio API en un servidor local</h3>
 
    Abrir un terminal dentro de la carpeta API e ingresar el siguiente comando:
    
    ```node src/index.js```
 
-<h3>4- Levantar el servicio cliente en un servidor local</h3>
+<h3>3- Levantar el servicio cliente en un servidor local</h3>
   
-   Utilizar la extension "live share" para visualizar el front en tu navegador local haciendo click derecho a index.html y seleccionando la opción
+    Abrir un terminal dentro de la carpeta cliente e ingresar el siguiente comando:
+   
+   ```start .\index.html```
+
+<h3>4- Opcional: levantar el cliente con Xampp</h3>
+
+    Para esto solo copia la carpeta "cliente" dentro de "htdocs" ubicada en la raiz de instalacion de Xampp y luego accede al siguiente link:
+    
+    http://localhost/cliente/
+
+
 
 
