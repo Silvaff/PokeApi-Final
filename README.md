@@ -55,7 +55,7 @@
     Para esto solo copia la carpeta "cliente" dentro de "htdocs" ubicada en la raiz de instalacion de Xampp y luego accede al siguiente link:
     
     http://localhost/cliente/
-
-
+---
+Proyecto creado por: Juan Gonzalez, Matías Silva, Matías Alarcon, Karina Sanchez, Ismael Jara.
 
 
