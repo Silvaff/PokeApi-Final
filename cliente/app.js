@@ -72,7 +72,7 @@ function LlamadaApi(url) {
           
           });
       };
-        // Mostramos Los botones a los enlaces de siguiente o anterior de la paginacion de los pokemones 
+        // Mostramos Los botones para la paginacion de los pokemones 
         //Boton hacia atrás
         botones.innerHTML = (res.previous) ?`<button type="button" onclick="paginacion(0)" class="btn btn-secondary">Atras</button>` : "";
         
