@@ -6,7 +6,7 @@ var id=0;
 
 
 
-function pokemon(id, nombre, altura, peso, tipo, forma, habilidades, ubicacion, sprite){
+function pokemon(id, nombre, altura, peso, tipo, forma, habilidades, ubicacion, sprite){ //Constructor para manipular los datos de los pokemon
   this.id = id;
   this.nombre = nombre;
   this.altura = altura;
@@ -19,15 +19,13 @@ function pokemon(id, nombre, altura, peso, tipo, forma, habilidades, ubicacion, 
 }
 
 
-function paginacion(i){
+function paginacion(i){     // Funcion para poder acceder a la pagina anterior y siguiente de los pokemones
   if(i==0){
     id-=10;
-   
     LlamadaApi("http://localhost:3000/offset/"+id);
   }
   if(i==1){
     id+=10;
-    
    LlamadaApi("http://localhost:3000/offset/"+id);
   }
 }
@@ -35,7 +33,7 @@ function paginacion(i){
 
 function LlamadaApi(url) {
   pokelista.innerHTML="";
-    fetch(url)
+    fetch(url)                    //Mediante la funcion fetch realizamos el request a la API creada para obtener acceso a los datos
     .then(res=>res.json())
     .then(res=> {
       for(let i of res.results){
@@ -43,19 +41,19 @@ function LlamadaApi(url) {
           .then(x=>x.json())
           .then(x=>{
             let tipo="";
-            x.types.forEach(element => {
-              tipo+=`<br>${element.type.name}`;
+            x.types.forEach(element => {        //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+              tipo+=`<br>${element.type.name}`;  //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
             });
             let formas="";
-            x.forms.forEach(element =>{
-              formas+=`<br>${element.name}`;
+            x.forms.forEach(element =>{       //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+              formas+=`<br>${element.name}`;  //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
             });
             let habilidades="";
-            x.abilities.forEach(element =>{
-              habilidades+=`<br>${element.ability.name} `;
+            x.abilities.forEach(element =>{   //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+              habilidades+=`<br>${element.ability.name} `;  //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
             });
 
-
+          //Mediante la utilidad innerHTML desplegamos en pantalla los datos del pokemon.
             pokelista.innerHTML+= `<div class="card" >
             <img src="${x.sprites.front_default}">
               <div class="card-body">
@@ -83,28 +81,30 @@ function LlamadaApi(url) {
   });
 }
 
-LlamadaApi(`http://localhost:3000/offset/"${id}`);
+LlamadaApi(`http://localhost:3000/offset/"${id}`); //Llamada inicial a la funcion LlamadaApi para mostrar los primeros 10 pokemones del listado
 
 function buscar(){
   BusquedaPoke.innerHTML="";
  var idpoke= document.getElementById("pokeid").value;
- fetch(`http://localhost:3000/pokemon/${idpoke}/`)
+ fetch(`http://localhost:3000/pokemon/${idpoke}/`)  //Mediante la funcion fetch realizamos el request a la API creada para obtener acceso a los datos
  .then(res=>res.json())
  .then(res=> {
   
   let auxTipo="";
-  res.tipo.forEach(element => {
-    auxTipo+=`<br> ${element.type.name}`;
+  res.tipo.forEach(element => {      //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+    auxTipo+=`<br> ${element.type.name}`;  //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
   });
   let auxForma="";
-  res.forma.forEach(element =>{
-    auxForma+=`<br> ${element.name}`;
+  res.forma.forEach(element =>{     //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+    auxForma+=`<br> ${element.name}`;  //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
   });
   let auxHabilidades="";
-  res.habilidades.forEach(element =>{
-    auxHabilidades+=` <br>${element.ability.name}`;
+  res.habilidades.forEach(element =>{     //Mediante la utilidad forEach() accedemos de forma individual a los objetos que se encuentran dentro de los arreglos de JSON
+    auxHabilidades+=` <br>${element.ability.name}`; //Para poder almacenar dicha informacion en una variable que posteriormente sera desplegada en pantalla.
   });
   
+
+  //Mediante la utilidad innerHTML desplegamos en pantalla los datos del pokemon.
   BusquedaPoke.innerHTML+= `
   <img src="${res.sprite}">
     <div class="card-body mr-5 ml-5">
